@@ -1,0 +1,27 @@
+
+<form [formGroup]="loginpage" (ngSubmit)="submitfunction()" class="form-container">
+  
+    <h1>Login Form</h1>
+    <!-- Name -->
+    <label for="name">Name:</label>
+    <input type="text" id="name" placeholder="Enter Name" formControlName="name">
+    <div *ngIf="loginpage.controls.name.invalid && loginpage.controls.name.touched">
+      <small class="error" style="color: red; font-size: 14px; font-weight: bold;">Name is required (Min: 3, Max: 20 characters)</small>
+    </div>
+
+    <br> <br> 
+
+  <!-- Password -->
+  <label for="password">Password:</label>
+  <input type="password" id="password" placeholder="Enter Password" formControlName="password">
+  <div *ngIf="loginpage.controls.password.invalid && loginpage.controls.password.touched">
+    <small class="error" style="color: red; font-size: 14px; font-weight: bold;">Password must be at least 3 characters</small>
+  </div>
+
+  <br> <br> 
+
+  <button [disabled]="loginpage.invalid">Login</button>
+
+</form> 
+
+<!-- <router-outlet/> -->

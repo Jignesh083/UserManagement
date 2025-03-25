@@ -1,0 +1,121 @@
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()" class="form-container">
+  <h1 class="form-title">Edit User</h1>
+
+  <!-- Name -->
+  <label for="name" class="label">Name:</label>
+  <input type="text" id="name" class="input-field" placeholder="Enter Name" formControlName="name">
+  <div *ngIf="editForm.controls.name.invalid && editForm.controls.name.touched" class="error-message">
+      <small>Name is required (Min: 3, Max: 20 characters)</small>
+  </div>
+
+  <!-- Email -->
+  <label for="email" class="label">Email:</label>
+  <input type="email" id="email" class="input-field" placeholder="Enter Email" formControlName="email">
+  <div *ngIf="editForm.controls.email.invalid && editForm.controls.email.touched" class="error-message">
+      <small>Enter a valid email</small>
+  </div>
+
+  <!-- Password -->
+  <label for="password" class="label">Password:</label>
+  <input type="password" id="password" class="input-field" placeholder="Enter Password" formControlName="password">
+  <div *ngIf="editForm.controls.password.invalid && editForm.controls.password.touched" class="error-message">
+      <small>Password must be at least 6 characters</small>
+  </div>
+
+  <!-- Phone Number -->
+  <label for="phone" class="label">Phone Number:</label>
+  <input type="tel" id="phone" class="input-field" placeholder="Enter Phone Number" formControlName="phone">
+  <div *ngIf="editForm.controls.phone.invalid && editForm.controls.phone.touched" class="error-message">
+      <small>Enter a valid 10-digit phone number</small>
+  </div>
+
+  <!-- Date of Birth -->
+  <label for="dob" class="label">Date of Birth:</label>
+  <input type="date" id="dob" class="input-field" formControlName="dob">
+  <div *ngIf="editForm.controls.dob.invalid && editForm.controls.dob.touched" class="error-message">
+      <small>Date of Birth is required</small>
+  </div>
+
+  <!-- Gender -->
+  <label class="label">Gender:</label>
+  <div class="radio-group">
+      <input type="radio" class="radio-input" formControlName="gender" value="Male" id="male">
+      <label for="male" class="radio-label">Male</label>
+      <input type="radio" class="radio-input" formControlName="gender" value="Female" id="female">
+      <label for="female" class="radio-label">Female</label>
+  </div>
+  <div *ngIf="editForm.controls.gender.invalid && editForm.controls.gender.touched" class="error-message">
+      <small>Select a gender</small>
+  </div>
+
+  <!-- Hobbies (Checkbox) -->
+  <label>Hobbies </label>
+  <div formArrayName="hobbies" class="checkbox-group">
+      <!-- <div *ngFor="let hobby of hobbiesList; let i = index">
+          <input type="checkbox" [id]="hobby" [value]="hobby" (change)="onCheckboxChange($event)" />
+          <label [for]="hobby">{{ hobby }}</label>
+      </div> -->
+
+      <div *ngFor="let hobbyControl of  hobbies.controls; let i = index">
+        <input type="checkbox" [formControlName]="i"/> {{ hobbiesList[i] }}
+      </div>
+      
+  </div>
+  <div *ngIf="editForm.get('hobbies')?.errors?.['required'] && editForm.get('hobbies')?.touched" class="error-message">
+      <small>Select at least one hobby</small>
+  </div>
+
+  <!-- Address -->
+  <label for="address" class="label">Address:</label>
+  <textarea id="address" class="textarea" placeholder="Enter Address" formControlName="address"></textarea>
+  <div *ngIf="editForm.controls.address.invalid && editForm.controls.address.touched" class="error-message">
+      <small>Address is required</small>
+  </div>
+
+  <!-- State Dropdown -->
+  <label for="state" class="label">Select State:</label>
+  <select id="state" class="select-dropdown" formControlName="state" (change)="onStateChange($event)">
+      <option value="">Select a state</option>
+      <option *ngFor="let state of states" [value]="state">{{ state }}</option>
+  </select>
+  <div *ngIf="editForm.controls.state.invalid && editForm.controls.state.touched" class="error-message">
+      <small>Select a state</small>
+  </div>
+
+  <!-- District Dropdown (Enabled only when Taluka is selected) -->
+  <label for="district" class="label">Select District:</label>
+  <select id="district" class="select-dropdown" formControlName="district" (change)="onDistrictChange($event)">
+      <option value="">Select a district</option>
+      <option *ngFor="let district of districts" [value]="district">{{ district }}</option>
+  </select>
+  <div *ngIf="editForm.controls.district.invalid && editForm.controls.district.touched" class="error-message">
+      <small>Select a district</small>
+  </div>
+
+  <!-- Taluka Dropdown (Enabled only when State is selected) -->
+  <label for="taluka" class="label">Select Taluka:</label>
+  <select id="taluka" class="select-dropdown" formControlName="taluka" (change)="onTalukaChange($event)">
+      <option value="">Select a taluka</option>
+      <option *ngFor="let taluka of talukas" [value]="taluka">{{ taluka }}</option>
+  </select>
+  <div *ngIf="editForm.controls.taluka.invalid && editForm.controls.taluka.touched" class="error-message">
+      <small>Select a taluka</small>
+  </div>
+
+  
+  <!-- Village Dropdown (Enabled only when District is selected) -->
+  <label for="village" class="label">Select Village:</label>
+  <select id="village" class="select-dropdown" formControlName="village" >
+      <option value="">Select a village</option>
+      <option *ngFor="let village of villages" [value]="village">{{ village }}</option>
+  </select>
+  <div *ngIf="editForm.controls.village.invalid && editForm.controls.village.touched" class="error-message">
+      <small>Select a village</small>
+  </div>
+
+  <!-- Buttons -->
+  <div class="button-group">
+      <button type="submit" class="submit-button">Update</button>
+      <button type="button" class="reset-button" (click)="resetForm()">Reset</button>
+  </div>
+</form>

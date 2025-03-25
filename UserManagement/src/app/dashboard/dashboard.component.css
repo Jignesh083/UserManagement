@@ -1,0 +1,151 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+}
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 80%;
+  margin-bottom: 20px;
+}
+
+table, th, td {
+  padding: 8px;
+  text-align: center;
+}
+
+.center-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+
+
+/* Fix overlapping dropdowns */
+ng-multiselect-dropdown {
+  display: inline-block;
+  margin-bottom: 10px; /* Minimal space between dropdowns */
+}
+
+.filter-name {
+  position: absolute;
+  left: 0;
+}
+/* Centering the Heading */
+h2 {
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center; /* Center the heading */
+}
+
+/* Filters Section */
+div {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+input, select {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+input:focus, select:focus {
+  border-color: #007bff;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #007bff;
+  color: white;
+}
+
+tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Buttons */
+button {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-right: 8px; /* Spacing between buttons */
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+button:first-child {
+  background-color: #28a745;
+  color: white;
+}
+
+button:last-child {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Spacing between Update and Delete buttons */
+td button {
+  margin-right: 100px; /* Small space between buttons */
+  display: inline-block;
+}
+
+/* Logout & Register Buttons */
+.center-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Space between buttons */
+  margin-top: 20px;
+}
+
+.center-buttons button {
+  background-color: #ff5733;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.center-buttons button:last-child {
+  background-color: #007bff;
+}
+
